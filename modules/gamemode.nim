@@ -1,8 +1,31 @@
 import std/[strformat, strutils, rdstdin, random]
 import ./[functions, questions, userdata]
 
+proc chooseDifficulty*(): Difficulty =
+  echo "Choose a difficulty:"
+  echo "  1. Easy   (7 lives, simpler questions)"
+  echo "  2. Medium (5 lives, balanced challenge)"
+  echo "  3. Hard   (4 lives, tougher questions)"
+
+  var input = ""
+  while input notin ["1", "2", "3"]:
+    input = readLineFromStdin("Enter 1, 2, or 3: ").strip()
+
+  case input
+  of "1": return easy
+  of "2": return medium
+  else: return hard
+
+proc difficultyStartingStats*(difficulty: Difficulty): tuple[lives: int, money: int] =
+  case difficulty
+  of easy: return (7, 80)
+  of medium: return (5, 50)
+  of hard: return (4, 40)
+
 proc runGame*(questions: seq[Question]) =
-  var stats = GameStats(lives: 5, money: 50)
+  let difficulty = chooseDifficulty()
+  let startingStats = difficultyStartingStats(difficulty)
+  var stats = GameStats(lives: startingStats.lives, money: startingStats.money)
 
   echo "Choose a mode:"
   echo "  1. Regular (one round)"
@@ -13,14 +36,18 @@ proc runGame*(questions: seq[Question]) =
   let endlessMode = mode == "2"
 
   var userData = loadUserData()
+  var questionOrder = filterQuestionsByDifficulty(questions, difficulty)
+  if questionOrder.len == 0:
+    questionOrder = questions
+
+  randomize()
+  shuffle(questionOrder)
   echo repeat("=", 60)
   echo "                      ENTROPY"
+  echo fmt"                 {difficultyLabel(difficulty).toUpperAscii()} DIFFICULTY"
   echo if endlessMode: "                    ENDLESS MODE" else: "                    REGULAR MODE"
   echo repeat("=", 60)
 
-  var questionOrder = questions
-  randomize()
-  shuffle(questionOrder)
   var
     index = 0
     questionNum = 0
@@ -32,7 +59,7 @@ proc runGame*(questions: seq[Question]) =
       echo repeat("-", 60)
       echo "Question round complete. Shuffling for the next round."
 
-    askQuestion(questionNum + 1, questionOrder[index], stats)
+    askQuestion(questionNum + 1, questionOrder[index], difficulty, stats)
     inc questionNum
     inc index
 
@@ -45,6 +72,7 @@ proc runGame*(questions: seq[Question]) =
   echo repeat("-", 60)
   echo fmt"  Final score: {stats.score}"
   echo fmt"  Money: ${stats.money}"
+  echo fmt"  Difficulty: {difficultyLabel(difficulty)}"
   echo fmt"  Questions answered: {questionNum}"
   echo fmt"  Total attempts: {stats.attempts}"
   echo fmt"  High score: {userData.highScore}"

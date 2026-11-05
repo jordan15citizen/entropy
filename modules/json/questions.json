@@ -2,153 +2,333 @@
   "questions": [
     {
       "question": "What is the capital of France?",
-      "answers": ["Berlin", "Madrid", "Paris", "Rome"],
-      "correctAnswer": "3"
+      "answers": [
+        "Berlin",
+        "Madrid",
+        "Paris",
+        "Rome"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "easy"
     },
     {
       "question": "What is 2 + 2?",
-      "answers": ["3", "4", "5", "6"],
-      "correctAnswer": "2"
+      "answers": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "easy"
     },
     {
       "question": "What is the largest planet in our solar system?",
-      "answers": ["Earth", "Jupiter", "Mars", "Venus"],
-      "correctAnswer": "2"
+      "answers": [
+        "Earth",
+        "Jupiter",
+        "Mars",
+        "Venus"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "easy"
     },
     {
       "question": "Who wrote 'To Kill a Mockingbird'?",
-      "answers": ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
-      "correctAnswer": "1"
+      "answers": [
+        "Harper Lee",
+        "Mark Twain",
+        "Ernest Hemingway",
+        "F. Scott Fitzgerald"
+      ],
+      "correctAnswer": "1",
+      "difficulty": "easy"
     },
     {
       "question": "What is the chemical symbol for water?",
-      "answers": ["H2O", "O2", "CO2", "NaCl"],
-      "correctAnswer": "1"
+      "answers": [
+        "H2O",
+        "O2",
+        "CO2",
+        "NaCl"
+      ],
+      "correctAnswer": "1",
+      "difficulty": "easy"
     },
     {
       "question": "How many sides does a hexagon have?",
-      "answers": ["5", "6", "7", "8"],
-      "correctAnswer": "2"
+      "answers": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "easy"
     },
     {
       "question": "Which ocean is the largest?",
-      "answers": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-      "correctAnswer": "4"
+      "answers": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Arctic Ocean",
+        "Pacific Ocean"
+      ],
+      "correctAnswer": "4",
+      "difficulty": "easy"
     },
     {
       "question": "What is the closest star to Earth?",
-      "answers": ["Sirius", "The Sun", "Proxima Centauri", "Polaris"],
-      "correctAnswer": "2"
+      "answers": [
+        "Sirius",
+        "The Sun",
+        "Proxima Centauri",
+        "Polaris"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "easy"
     },
     {
       "question": "Which animal is known as the largest mammal?",
-      "answers": ["African elephant", "Giraffe", "Blue whale", "Hippopotamus"],
-      "correctAnswer": "3"
+      "answers": [
+        "African elephant",
+        "Giraffe",
+        "Blue whale",
+        "Hippopotamus"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "easy"
     },
     {
       "question": "What is the freezing point of water in Celsius?",
-      "answers": ["0 degrees", "10 degrees", "32 degrees", "100 degrees"],
-      "correctAnswer": "1"
+      "answers": [
+        "0 degrees",
+        "10 degrees",
+        "32 degrees",
+        "100 degrees"
+      ],
+      "correctAnswer": "1",
+      "difficulty": "easy"
     },
     {
       "question": "Which country is home to the city of Kyoto?",
-      "answers": ["China", "South Korea", "Japan", "Thailand"],
-      "correctAnswer": "3"
+      "answers": [
+        "China",
+        "South Korea",
+        "Japan",
+        "Thailand"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "medium"
     },
     {
       "question": "How many colors are traditionally named in a rainbow?",
-      "answers": ["5", "6", "7", "8"],
-      "correctAnswer": "3"
+      "answers": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "medium"
     },
     {
       "question": "Which instrument has keys, pedals, and strings?",
-      "answers": ["Flute", "Piano", "Trumpet", "Violin"],
-      "correctAnswer": "2"
+      "answers": [
+        "Flute",
+        "Piano",
+        "Trumpet",
+        "Violin"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "medium"
     },
     {
       "question": "What is the main language spoken in Brazil?",
-      "answers": ["Spanish", "Portuguese", "French", "Italian"],
-      "correctAnswer": "2"
+      "answers": [
+        "Spanish",
+        "Portuguese",
+        "French",
+        "Italian"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "medium"
     },
     {
       "question": "Which planet is known as the Red Planet?",
-      "answers": ["Venus", "Mars", "Mercury", "Saturn"],
-      "correctAnswer": "2"
+      "answers": [
+        "Venus",
+        "Mars",
+        "Mercury",
+        "Saturn"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "medium"
     },
     {
       "question": "What is the largest land animal?",
-      "answers": ["Rhinoceros", "Giraffe", "African elephant", "Polar bear"],
-      "correctAnswer": "3"
+      "answers": [
+        "Rhinoceros",
+        "Giraffe",
+        "African elephant",
+        "Polar bear"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "medium"
     },
     {
       "question": "How many minutes are in one hour?",
-      "answers": ["30", "45", "60", "90"],
-      "correctAnswer": "3"
+      "answers": [
+        "30",
+        "45",
+        "60",
+        "90"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "medium"
     },
     {
       "question": "Which material is primarily used to make glass?",
-      "answers": ["Clay", "Sand", "Coal", "Limestone"],
-      "correctAnswer": "2"
+      "answers": [
+        "Clay",
+        "Sand",
+        "Coal",
+        "Limestone"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "medium"
     },
     {
       "question": "What is the hardest naturally occurring mineral?",
-      "answers": ["Quartz", "Topaz", "Diamond", "Sapphire"],
-      "correctAnswer": "3"
+      "answers": [
+        "Quartz",
+        "Topaz",
+        "Diamond",
+        "Sapphire"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "medium"
     },
     {
       "question": "Which continent is the Sahara Desert located on?",
-      "answers": ["Asia", "Africa", "South America", "Australia"],
-      "correctAnswer": "2"
+      "answers": [
+        "Asia",
+        "Africa",
+        "South America",
+        "Australia"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "medium"
     },
     {
       "question": "What do bees collect from flowers to make honey?",
-      "answers": ["Nectar", "Pollen only", "Sap", "Dew"],
-      "correctAnswer": "1"
+      "answers": [
+        "Nectar",
+        "Pollen only",
+        "Sap",
+        "Dew"
+      ],
+      "correctAnswer": "1",
+      "difficulty": "medium"
     },
     {
       "question": "Which gas do plants absorb from the atmosphere?",
-      "answers": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
-      "correctAnswer": "3"
+      "answers": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Hydrogen"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "medium"
     },
     {
       "question": "How many bones are typically in an adult human body?",
-      "answers": ["106", "206", "306", "406"],
-      "correctAnswer": "2"
+      "answers": [
+        "106",
+        "206",
+        "306",
+        "406"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "hard"
     },
     {
       "question": "Which is the smallest prime number?",
-      "answers": ["0", "1", "2", "3"],
-      "correctAnswer": "3"
+      "answers": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "hard"
     },
     {
       "question": "What is the currency of the United Kingdom?",
-      "answers": ["Euro", "Pound sterling", "Dollar", "Franc"],
-      "correctAnswer": "2"
+      "answers": [
+        "Euro",
+        "Pound sterling",
+        "Dollar",
+        "Franc"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "hard"
     },
     {
       "question": "Which bird is often associated with delivering babies in folklore?",
-      "answers": ["Swan", "Stork", "Heron", "Crane"],
-      "correctAnswer": "2"
+      "answers": [
+        "Swan",
+        "Stork",
+        "Heron",
+        "Crane"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "hard"
     },
     {
       "question": "What is the process by which liquid water becomes water vapor?",
-      "answers": ["Condensation", "Freezing", "Evaporation", "Melting"],
-      "correctAnswer": "3"
+      "answers": [
+        "Condensation",
+        "Freezing",
+        "Evaporation",
+        "Melting"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "hard"
     },
     {
       "question": "Which sport uses the terms love, deuce, and ace?",
-      "answers": ["Tennis", "Cricket", "Golf", "Volleyball"],
-      "correctAnswer": "1"
+      "answers": [
+        "Tennis",
+        "Cricket",
+        "Golf",
+        "Volleyball"
+      ],
+      "correctAnswer": "1",
+      "difficulty": "hard"
     },
     {
       "question": "What is the largest organ of the human body?",
-      "answers": ["Liver", "Brain", "Skin", "Lung"],
-      "correctAnswer": "3"
+      "answers": [
+        "Liver",
+        "Brain",
+        "Skin",
+        "Lung"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "hard"
     },
     {
       "question": "At sea level, what is the boiling point of water in Celsius?",
-      "answers": ["50 degrees", "80 degrees", "100 degrees", "120 degrees"],
-      "correctAnswer": "3"
+      "answers": [
+        "50 degrees",
+        "80 degrees",
+        "100 degrees",
+        "120 degrees"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "hard"
     }
   ]
 }

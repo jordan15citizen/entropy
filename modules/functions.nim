@@ -8,12 +8,20 @@ type
     score*: int
     attempts*: int
 
-proc askQuestion*(questionNum: int, question: Question, stats: var GameStats) =
+proc difficultyReward*(difficulty: Difficulty): int =
+  case difficulty
+  of easy: return 1
+  of medium: return 2
+  of hard: return 3
+
+proc askQuestion*(questionNum: int, question: Question, difficulty: Difficulty, stats: var GameStats) =
   let correctAnswerIndex = parseInt(question.correctAnswer) - 1
   let correctAnswerText = question.answers[correctAnswerIndex]
+  let rewardMultiplier = difficultyReward(difficulty)
 
   echo repeat("-", 60)
   echo fmt"Question {questionNum}: {question.text}"
+  echo fmt"Difficulty: {difficultyLabel(difficulty)}"
   echo ""
   for i, answer in question.answers:
     echo fmt"  {i + 1}. {answer}"
@@ -28,12 +36,12 @@ proc askQuestion*(questionNum: int, question: Question, stats: var GameStats) =
       userGuess.cmpIgnoreCase(correctAnswerText) == 0:
     echo ""
     echo fmt"  Correct! The answer is {correctAnswerText}."
-    stats.score += 5
-    stats.money += 20
+    stats.score += 5 * rewardMultiplier
+    stats.money += 20 * rewardMultiplier
   else:
     echo fmt"  Not quite. The correct answer is {correctAnswerText}."
     dec stats.lives
-    stats.money -= 10
+    stats.money -= 10 * rewardMultiplier
     if stats.lives <= 0:
       echo ""
       echo "  You have no lives left. Game over!"
