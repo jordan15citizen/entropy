@@ -243,6 +243,17 @@
       "difficulty": "medium"
     },
     {
+      "question": "What galaxy do we live in?",
+      "answers": [
+        "Big Bang",
+        "Andeomeda",
+        "Milky Way",
+        "Asdana"
+      ],
+      "correctAnswer": "3",
+      "difficulty": "hard"
+    },
+    {
       "question": "How many bones are typically in an adult human body?",
       "answers": [
         "106",
@@ -328,6 +339,39 @@
         "120 degrees"
       ],
       "correctAnswer": "3",
+      "difficulty": "hard"
+    },
+    {
+      "question": "What is the capital of Australia?",
+      "answers": [
+        "Sydney",
+        "Canberra",
+        "Melbourne",
+        "Perth"
+      ],
+      "correctAnswer": "2",
+      "difficulty": "hard"
+    },
+    {
+      "question": "What is the chemical formula for ammonium sulfate?",
+      "answers": [
+        "(NH4)2SO4",
+        "NH3SO4",
+        "(NH4)2SO3",
+        "NH3SO3"
+      ],
+      "correctAnswer": "1",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Which is the chemical formula of ammonium sulfide?",
+      "answers": [
+        "(NH4)2S",
+        "NH3S",
+        "(NH4)2S2",
+        "NH3S2"
+      ],
+      "correctAnswer": "2",
       "difficulty": "hard"
     }
   ]
