@@ -1,0 +1,23 @@
+Version 1.0.0:
+Release Date: 09/11/2026 - 3:41 PM
+
+INFO - Initial release of the application
+
+  - First version with logging functionality implemented.
+  - Added highscore, question data and user data saving and loading functionality.
+  - Added basic user interface for displaying scores and questions.
+  - Implemented basic error handling for file operations.
+
+  - Details of this file:
+    - This log file records the version history of the application.
+    - Each entry includes the version number, date, and a summary of changes made in that version.
+    - The log is intended to help developers and users track the evolution of the application over time.
+
+GENERAL INFORMATION:
+  - Game go kaboom! There is no GUI, only a console interface. You don't need to know more!
+  - Developed in a MacBook Air M1 running macOS Tahoe 26, not to flex!
+  - I may add GUI support later.
+  - Version 1.0.0 is the first version of the game.
+  - Cross-platform is NOT tested, although it's probably easy to add support.
+  - Uses Nim and JSON.
+  - Version increments by 0.0.1 for minor changes, 0.1.0 for new features, and 1.0.0 for major releases.

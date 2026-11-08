@@ -65,6 +65,9 @@ proc runGame*(questions: seq[Question]) =
 
   userData.highScore = max(userData.highScore, stats.score)
   inc userData.gamesPlayed
+  userData.questionsAnswered += stats.questionsAnswered
+  userData.correctAnswers += stats.correctAnswers
+  userData.incorrectAnswers += stats.incorrectAnswers
   saveUserData(userData)
 
   echo repeat("-", 60)
@@ -73,8 +76,13 @@ proc runGame*(questions: seq[Question]) =
   echo fmt"  Final score: {stats.score}"
   echo fmt"  Money: ${stats.money}"
   echo fmt"  Difficulty: {difficultyLabel(difficulty)}"
-  echo fmt"  Questions answered: {questionNum}"
+  echo fmt"  Questions answered: {stats.questionsAnswered}"
+  echo fmt"  Correct answers: {stats.correctAnswers}"
+  echo fmt"  Incorrect answers: {stats.incorrectAnswers}"
   echo fmt"  Total attempts: {stats.attempts}"
   echo fmt"  High score: {userData.highScore}"
   echo fmt"  Games played: {userData.gamesPlayed}"
+  echo fmt"  All-time questions answered: {userData.questionsAnswered}"
+  echo fmt"  All-time correct answers: {userData.correctAnswers}"
+  echo fmt"  All-time incorrect answers: {userData.incorrectAnswers}"
   echo repeat("=", 60)

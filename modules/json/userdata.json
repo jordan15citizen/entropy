@@ -1,4 +1,7 @@
 {
   "highScore": 200,
-  "gamesPlayed": 2
+  "gamesPlayed": 2,
+  "questionsAnswered": 0,
+  "correctAnswers": 0,
+  "incorrectAnswers": 0
 }

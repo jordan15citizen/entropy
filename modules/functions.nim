@@ -8,6 +8,9 @@ type
     score*: int
     attempts*: int
     bonusMultiplier*: int
+    questionsAnswered*: int
+    correctAnswers*: int
+    incorrectAnswers*: int
 
 proc difficultyReward*(difficulty: Difficulty): int =
   case difficulty
@@ -97,10 +100,14 @@ proc askQuestion*(questionNum: int, question: Question, difficulty: Difficulty, 
       userGuess.cmpIgnoreCase(correctAnswerText) == 0:
     echo ""
     echo fmt"  Correct! The answer is {correctAnswerText}."
+    inc stats.questionsAnswered
+    inc stats.correctAnswers
     stats.score += 5 * rewardMultiplier
     stats.money += 20 * rewardMultiplier
   else:
     echo fmt"  Not quite. The correct answer is {correctAnswerText}."
+    inc stats.questionsAnswered
+    inc stats.incorrectAnswers
     dec stats.lives
     stats.money -= 10 * rewardMultiplier
     if stats.lives <= 0:
