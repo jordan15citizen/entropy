@@ -1,3 +1,17 @@
+Version 1.1.0:
+Release Date: 11/11/2026
+
+INFO - Added a sudden-death game mode and GPLv3 licensing.
+
+  - Added Sudden Death mode, where losing one life ends the game immediately.
+  - Added the GNU General Public License version 3.
+  - Added command-line help, info, game start, game mode, and user-data commands.
+  - Added command-line difficulty selection.
+  - Randomized the answer order for each question while keeping the correct answer mapping accurate.
+  - Fixed a shuffle index bound that could cause an out-of-range crash.
+  - Renamed the executable from main to entropy.
+  - Added an installer for placing entropy on the system PATH.
+
 Version 1.0.0:
 Release Date: 09/11/2026 - 3:41 PM
 

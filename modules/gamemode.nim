@@ -1,5 +1,26 @@
-import std/[strformat, strutils, rdstdin, random]
+import std/[strformat, strutils, rdstdin, random, options]
 import ./[functions, questions, userdata]
+
+type
+  GameMode* = enum
+    interactiveMode
+    regularMode
+    endlessMode
+    suddenDeathMode
+
+proc parseGameMode*(value: string): GameMode =
+  case value.toLowerAscii()
+  of "regular": return regularMode
+  of "endless": return endlessMode
+  of "sudden-death", "sudden_death", "sudden death": return suddenDeathMode
+  else: raise newException(ValueError, "Unknown game mode: " & value)
+
+proc parseDifficulty*(value: string): Difficulty =
+  case value.toLowerAscii()
+  of "easy": return easy
+  of "medium": return medium
+  of "hard": return hard
+  else: raise newException(ValueError, "Unknown difficulty: " & value)
 
 proc chooseDifficulty*(): Difficulty =
   echo "Choose a difficulty:"
@@ -22,18 +43,25 @@ proc difficultyStartingStats*(difficulty: Difficulty): tuple[lives: int, money: 
   of medium: return (5, 50)
   of hard: return (4, 40)
 
-proc runGame*(questions: seq[Question]) =
-  let difficulty = chooseDifficulty()
+proc runGame*(questions: seq[Question], selectedMode = interactiveMode,
+              selectedDifficulty = none(Difficulty)) =
+  let difficulty = if selectedDifficulty.isSome: selectedDifficulty.get else: chooseDifficulty()
   let startingStats = difficultyStartingStats(difficulty)
   var stats = GameStats(lives: startingStats.lives, money: startingStats.money)
 
-  echo "Choose a mode:"
-  echo "  1. Regular (one round)"
-  echo "  2. Endless (repeat until lives run out)"
-  var mode = ""
-  while mode notin ["1", "2"]:
-    mode = readLineFromStdin("Enter 1 or 2: ").strip()
-  let endlessMode = mode == "2"
+  var gameMode = selectedMode
+  if gameMode == interactiveMode:
+    echo "Choose a mode:"
+    echo "  1. Regular (one round)"
+    echo "  2. Endless (repeat until lives run out)"
+    echo "  3. Sudden Death (one life lost = death)"
+    var mode = ""
+    while mode notin ["1", "2", "3"]:
+      mode = readLineFromStdin("Enter 1, 2, or 3: ").strip()
+    case mode
+    of "1": gameMode = regularMode
+    of "2": gameMode = endlessMode
+    else: gameMode = suddenDeathMode
 
   var userData = loadUserData()
   var questionOrder = filterQuestionsByDifficulty(questions, difficulty)
@@ -45,21 +73,26 @@ proc runGame*(questions: seq[Question]) =
   echo repeat("=", 60)
   echo "                      ENTROPY"
   echo fmt"                 {difficultyLabel(difficulty).toUpperAscii()} DIFFICULTY"
-  echo if endlessMode: "                    ENDLESS MODE" else: "                    REGULAR MODE"
+  case gameMode
+  of regularMode: echo "                    REGULAR MODE"
+  of endlessMode: echo "                    ENDLESS MODE"
+  of suddenDeathMode: echo "                 SUDDEN DEATH MODE"
+  of interactiveMode: discard
   echo repeat("=", 60)
 
   var
     index = 0
     questionNum = 0
 
-  while stats.lives > 0 and (endlessMode or questionNum < questionOrder.len):
+  while stats.lives > 0 and (gameMode == endlessMode or questionNum < questionOrder.len):
     if index >= questionOrder.len:
       index = 0
       shuffle(questionOrder)
       echo repeat("-", 60)
       echo "Question round complete. Shuffling for the next round."
 
-    askQuestion(questionNum + 1, questionOrder[index], difficulty, stats)
+    askQuestion(questionNum + 1, questionOrder[index], difficulty, stats,
+                gameMode == suddenDeathMode)
     inc questionNum
     inc index
 

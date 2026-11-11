@@ -1,4 +1,4 @@
-import std/[json, os, strutils]
+import std/[json, os, strutils, random]
 
 type
   Difficulty* = enum
@@ -11,6 +11,26 @@ type
     answers*: seq[string]
     correctAnswer*: string
     difficulty*: Difficulty
+
+proc randomizeAnswerOrder*(question: var Question) =
+  if question.answers.len < 2:
+    return
+
+  randomize()
+  var shuffledAnswers = question.answers
+  for i in countdown(shuffledAnswers.high, 1):
+    let j = rand(i)
+    swap(shuffledAnswers[i], shuffledAnswers[j])
+
+  let correctAnswerText = question.answers[parseInt(question.correctAnswer) - 1]
+  var newCorrectIndex = 0
+  for i, answer in shuffledAnswers:
+    if answer == correctAnswerText:
+      newCorrectIndex = i + 1
+      break
+
+  question.answers = shuffledAnswers
+  question.correctAnswer = $newCorrectIndex
 
 proc difficultyFromString*(value: string): Difficulty =
   case toLowerAscii(value)

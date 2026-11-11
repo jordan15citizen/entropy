@@ -68,16 +68,20 @@ proc openShop*(question: Question, stats: var GameStats): bool =
     echo "  Leaving the shop."
     return false
 
-proc askQuestion*(questionNum: int, question: Question, difficulty: Difficulty, stats: var GameStats) =
-  let correctAnswerIndex = parseInt(question.correctAnswer) - 1
-  let correctAnswerText = question.answers[correctAnswerIndex]
+proc askQuestion*(questionNum: int, question: Question, difficulty: Difficulty, stats: var GameStats,
+                  suddenDeathMode = false) =
+  var randomizedQuestion = question
+  randomizedQuestion.randomizeAnswerOrder()
+
+  let correctAnswerIndex = parseInt(randomizedQuestion.correctAnswer) - 1
+  let correctAnswerText = randomizedQuestion.answers[correctAnswerIndex]
   let baseRewardMultiplier = difficultyReward(difficulty)
 
   echo repeat("-", 60)
-  echo fmt"Question {questionNum}: {question.text}"
+  echo fmt"Question {questionNum}: {randomizedQuestion.text}"
   echo fmt"Difficulty: {difficultyLabel(difficulty)}"
   echo ""
-  for i, answer in question.answers:
+  for i, answer in randomizedQuestion.answers:
     echo fmt"  {i + 1}. {answer}"
   echo ""
 
@@ -89,14 +93,14 @@ proc askQuestion*(questionNum: int, question: Question, difficulty: Difficulty, 
   while true:
     userGuess = readLineFromStdin("Please enter your answer here, or type 'shop' to open the shop: ").strip()
     if userGuess.cmpIgnoreCase("shop") == 0:
-      discard openShop(question, stats)
+      discard openShop(randomizedQuestion, stats)
       echo repeat("-", 60)
       echo fmt"  Lives: {stats.lives}  |  Money: ${stats.money}  |  Score: {stats.score}  |  Attempts: {stats.attempts}"
       continue
     break
 
   let rewardMultiplier = baseRewardMultiplier * stats.bonusMultiplier
-  if userGuess == question.correctAnswer.strip() or
+  if userGuess == randomizedQuestion.correctAnswer.strip() or
       userGuess.cmpIgnoreCase(correctAnswerText) == 0:
     echo ""
     echo fmt"  Correct! The answer is {correctAnswerText}."
@@ -109,6 +113,8 @@ proc askQuestion*(questionNum: int, question: Question, difficulty: Difficulty, 
     inc stats.questionsAnswered
     inc stats.incorrectAnswers
     dec stats.lives
+    if suddenDeathMode:
+      stats.lives = 0
     stats.money -= 10 * rewardMultiplier
     if stats.lives <= 0:
       echo ""
